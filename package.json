@@ -1,0 +1,26 @@
+{
+  "name": "randomfinding",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "roblox": "rbxtsc -w",
+    "rojo": "rojo serve",
+    "tree": "npx io-serve"
+  },
+  "keywords": [],
+  "author": "MIN - CHIYOU",
+  "license": "ISC",
+  "devDependencies": {
+    "@rbxts/compiler-types": "^2.1.0-types.1",
+    "@rbxts/types": "^1.0.683",
+    "@typescript-eslint/eslint-plugin": "^5.59.5",
+    "@typescript-eslint/parser": "^5.59.5",
+    "eslint": "^8.40.0",
+    "eslint-plugin-roblox-ts": "^0.0.35",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@rbxts/services": "^1.5.1"
+  }
+}
