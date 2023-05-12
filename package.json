@@ -1,15 +1,15 @@
 {
   "name": "randomfinding",
   "version": "1.0.0",
-  "description": "",
+  "description": "school work",
   "main": "index.js",
   "scripts": {
-    "roblox": "rbxtsc -w",
-    "rojo": "rojo serve",
-    "tree": "npx io-serve"
+    "1": "rbxtsc -w",
+    "2": "rojo serve",
+    "3": "npx io-serve"
   },
   "keywords": [],
-  "author": "MIN - CHIYOU",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@rbxts/compiler-types": "^2.1.0-types.1",
