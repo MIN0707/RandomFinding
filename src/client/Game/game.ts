@@ -51,16 +51,18 @@ function createObject(board: boardType[][], x: number, y: number) {
 
     // const objectPart = new Instance("Part");
     const objectPart = randomObject.Clone()
+
     // objectPart.Color = Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255))
     // objectPart.Size = new Vector3(4,4,4);
 
-    objectPart.Name = `Object${objectNumber}`
-    const objectChilderens = objectPart.GetChildren() as BasePart[];
-    objectPart.Position = new Vector3(x * 8, 2.85   , y * 8);
-    objectChilderens.forEach((child) => {
-        child.Position = new Vector3(x * 8, child.Position.Y, y * 8);
-    })
+    const position = new Vector3(x * 8, 2.85, y * 8);
+    const rotation = objectPart.Model.PrimaryPart!.Orientation;
+    const cframe = new CFrame(position, position.add(rotation));
+    const newFrame = new CFrame(position, position.add(rotation.mul(new CFrame(0, 0, 1).LookVector)));
 
+    objectPart.Name = `Object${objectNumber}`
+    objectPart.CFrame = cframe;
+    objectPart.Model.SetPrimaryPartCFrame(newFrame);
     objectPart.Parent = Workspace;
     objectPart.Anchored = true;
 
@@ -126,10 +128,11 @@ function createObject(board: boardType[][], x: number, y: number) {
 }
 
 function nextLevel() {
-    const randoms = randomsNumber[math.random(0, randomsNumber.size() - 1)];
-    const x = randoms % 10;
-    const y = math.floor(randoms / 10);
-    randomsNumber.remove(randoms);
+    const ArrayrandomsNumber = math.random(0, randomsNumber.size() - 1);
+    const randoms = randomsNumber[ArrayrandomsNumber];
+    const x = math.floor(randoms / 10);
+    const y = randoms % 10;
+    randomsNumber.remove(ArrayrandomsNumber);
 
     movePlayerToSpawnPoint();
     level++;

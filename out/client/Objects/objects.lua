@@ -5,8 +5,7 @@ local cloneOjects = {}
 local function reset()
 	local _clone1 = Workspace.Clones.Clone1
 	table.insert(cloneOjects, _clone1)
-	local _clone2 = Workspace.Clones.Clone2
-	table.insert(cloneOjects, _clone2)
+	-- cloneOjects.push(Workspace.Clones.Clone2)
 end
 reset()
 return {

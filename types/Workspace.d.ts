@@ -1,39 +1,8 @@
 interface Workspace extends Model {
-	Clones: Folder & {
-		Clone1: Part & {
-			Part: MeshPart & {
-				banner_1: Attachment;
-				banner_beam: Beam;
-				Impact: Sound;
-				Dust: ParticleEmitter;
-				RadioStatic: Sound;
-				banner_border: Beam;
-				ImpactSound: ModuleScript;
-				banner_0: Attachment;
-				RadioMusic: Sound & {
-					ReverbSoundEffect: ReverbSoundEffect;
-				};
-				RadioMaterial: SurfaceAppearance;
-				LED: Attachment & {
-					Light: BillboardGui & {
-						Sprite: ImageLabel;
-					};
-				};
-			};
-		};
-		Clone2: Part & {
-			["구멍"]: UnionOperation;
-			["테두리"]: UnionOperation;
-			["가시"]: UnionOperation;
-		};
-	};
-	Camera: Camera;
-	Baseplate: Part & {
-		Texture: Texture;
-	};
-	["클론바닥"]: Part & {
+	["클론바닥2"]: Part & {
 		Footprints: Texture;
 	};
+	Part: Part;
 	SpawnLocation: SpawnLocation;
 	walls: Folder & {
 		["기둥"]: UnionOperation & {
@@ -105,6 +74,27 @@ interface Workspace extends Model {
 		["바닥선"]: UnionOperation;
 		["바닥카펫"]: Part & {
 			Footprints: Texture;
+		};
+	};
+	Camera: Camera;
+	Baseplate: Part & {
+		Texture: Texture;
+	};
+	["클론바닥1"]: Part & {
+		Floor: Texture;
+		Footprints: Texture;
+	};
+	Model: Model & {
+		Union: UnionOperation;
+		light: Part;
+	};
+	Clones: Folder & {
+		Clone1: Part & {
+			Model: Model & {
+				["구멍"]: UnionOperation;
+				["테두리"]: UnionOperation;
+				["가시"]: UnionOperation;
+			};
 		};
 	};
 }

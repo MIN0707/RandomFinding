@@ -1,10 +1,13 @@
 import { Workspace } from "@rbxts/services";
 
-export const cloneOjects:BasePart[] = [];
+type objects = Part & {
+    Model: Model
+}
+export const cloneOjects:objects[] = [];
 
 export function reset(){
     cloneOjects.push(Workspace.Clones.Clone1)
-    cloneOjects.push(Workspace.Clones.Clone2)
+    // cloneOjects.push(Workspace.Clones.Clone2)
 }
 
 reset();

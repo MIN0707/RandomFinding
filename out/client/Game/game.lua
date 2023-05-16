@@ -83,15 +83,15 @@ local function createObject(board, x, y)
 	local objectPart = randomObject:Clone()
 	-- objectPart.Color = Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255))
 	-- objectPart.Size = new Vector3(4,4,4);
+	local position = Vector3.new(x * 8, 2.85, y * 8)
+	local rotation = objectPart.Model.PrimaryPart.Orientation
+	local cframe = CFrame.new(position, position + rotation)
+	local _lookVector = CFrame.new(0, 0, 1).LookVector
+	local _arg0 = rotation * _lookVector
+	local newFrame = CFrame.new(position, position + _arg0)
 	objectPart.Name = "Object" .. tostring(objectNumber)
-	local objectChilderens = objectPart:GetChildren()
-	objectPart.Position = Vector3.new(x * 8, 2.85, y * 8)
-	local _arg0 = function(child)
-		child.Position = Vector3.new(x * 8, child.Position.Y, y * 8)
-	end
-	for _k, _v in objectChilderens do
-		_arg0(_v, _k - 1, objectChilderens)
-	end
+	objectPart.CFrame = cframe
+	objectPart.Model:SetPrimaryPartCFrame(newFrame)
 	objectPart.Parent = Workspace
 	objectPart.Anchored = true
 	local clickDetector = Instance.new("ClickDetector")
@@ -141,10 +141,11 @@ local function createObject(board, x, y)
 	return objectPart
 end
 function nextLevel()
-	local randoms = randomsNumber[math.random(0, #randomsNumber - 1) + 1]
-	local x = randoms % 10
-	local y = math.floor(randoms / 10)
-	table.remove(randomsNumber, randoms + 1)
+	local ArrayrandomsNumber = math.random(0, #randomsNumber - 1)
+	local randoms = randomsNumber[ArrayrandomsNumber + 1]
+	local x = math.floor(randoms / 10)
+	local y = randoms % 10
+	table.remove(randomsNumber, ArrayrandomsNumber + 1)
 	movePlayerToSpawnPoint()
 	level += 1
 	board[x + 1][y + 1] = {
